@@ -29,9 +29,16 @@ pipeline {
 
 		stage("Test"){
 		steps {
-        def serverProcess = sh(script: 'node server.js &', returnStatus: true)
-		sh 'npm test'
-		}
+	         script {
+                    // Start the server in the background
+                    def serverProcess = sh(script: 'node server.js &', returnStatus: true)
+
+                    // Run tests
+                    sh 'npm test'
+
+                    // Stop the server
+                    sh "kill ${serverProcess}"
+                }
 		}
 
 		stage("Build & Push Docker image") {
