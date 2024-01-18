@@ -2,7 +2,7 @@ pipeline {
 
 	environment {
 	registry = "thanhnguyencfa/jenkins-docker-test"
-	DOCKER_PWD = Docker@123
+	DOCKER_PWD = "Docker@123"
 	BUILD_NUMBER=10
 	}
 
