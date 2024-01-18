@@ -29,7 +29,7 @@ pipeline {
 
 		stage("Test"){
 		steps {
-		sh 'node server.js'
+        def serverProcess = sh(script: 'node server.js &', returnStatus: true)
 		sh 'npm test'
 		}
 		}
