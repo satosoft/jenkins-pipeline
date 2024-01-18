@@ -44,9 +44,9 @@ pipeline {
 
 		stage("Build & Push Docker image") {
 		steps {
-		sh "docker image build -t $registry:$BUILD_NUMBER ."
-		sh "docker login -u thanhnguyencfa -p $DOCKER_PWD"
-		sh "docker image push $registry:$BUILD_NUMBER"
+		sh "docker image build -t thanhnguyencfa/jenkins-docker-test:20 ."
+		sh "docker login -u thanhnguyencfa -p Docker@123"
+		sh "docker image push thanhnguyencfa/jenkins-docker-test:20"
 		sh "docker image rm $registry:$BUILD_NUMBER"
 		}
 		}
