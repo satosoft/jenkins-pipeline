@@ -1,14 +1,14 @@
 pipeline {
 
 	environment {
-	registry = "thanhnguyencfa/jenkins-docker-test"
-	DOCKER_PWD = "Docker@123"
-	BUILD_NUMBER=30
+	registry = "satosoft/alpine-node-docker"
+	DOCKER_PWD = "Docker@1209"
+	BUILD_NUMBER=02
 	}
 
 	agent {
 	docker {
-	image 'gnschenker/jenkins-node-sample'
+	image 'satosoft/alpine-node-docker:01'
 	args '-p 3000:3000'
 	args '-w /app'
 	args '-v /var/run/docker.sock:/var/run/docker.sock'
@@ -44,9 +44,9 @@ pipeline {
 
 		stage("Build & Push Docker image") {
 		steps {
-		sh "docker image build -t thanhnguyencfa/jenkins-docker-test:20 ."
-		sh "docker login -u thanhnguyencfa -p Docker@123"
-		sh "docker image push thanhnguyencfa/jenkins-docker-test:20"
+		sh "docker image build -t satosoft/alpine-node-docker:03 ."
+		sh "docker login -u satosoft -p Docker@1209"
+		sh "docker image push satosoft/alpine-node-docker:03"
 		sh "docker image rm $registry:$BUILD_NUMBER"
 		}
 		}
