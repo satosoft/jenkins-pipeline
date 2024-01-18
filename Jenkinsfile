@@ -3,7 +3,7 @@ pipeline {
 	environment {
 	registry = "satosoft/alpine-node-docker"
 	DOCKER_PWD = "Docker@1209"
-	BUILD_NUMBER=02
+	BUILD_NUMBER=04
 	}
 
 	agent {
@@ -44,9 +44,9 @@ pipeline {
 
 		stage("Build & Push Docker image") {
 		steps {
-		sh "docker image build -t satosoft/alpine-node-docker:03 ."
+		sh "docker image build -t satosoft/alpine-node-docker:04 ."
 		sh "docker login -u satosoft -p Docker@1209"
-		sh "docker image push satosoft/alpine-node-docker:03"
+		sh "docker image push satosoft/alpine-node-docker:04"
 		sh "docker image rm $registry:$BUILD_NUMBER"
 		}
 		}
