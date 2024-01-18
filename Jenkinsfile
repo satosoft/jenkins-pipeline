@@ -1,9 +1,9 @@
 pipeline {
 
 	environment {
-	registry = "gnschenker/jenkins-docker-test"
-	DOCKER_PWD = credentials('docker-login-pwd')
-	BUILD_NUMBER=26
+	registry = "thanhnguyencfa/jenkins-docker-test"
+	DOCKER_PWD = Docker@123
+	BUILD_NUMBER=10
 	}
 
 	agent {
@@ -36,7 +36,7 @@ pipeline {
 		stage("Build & Push Docker image") {
 		steps {
 		sh 'docker image build -t $registry:$BUILD_NUMBER.'
-		sh 'docker login -u satoshi -p $DOCKER_PWD'
+		sh 'docker login -u thanhnguyencfa -p $DOCKER_PWD'
 		sh 'docker image push $registry:$BUILD_NUMBER'
 		sh "docker image rm $registry:$BUILD_NUMBER"
 		}
