@@ -1,13 +1,14 @@
 pipeline {
 
 	environment {
-	registry = "satoshi/jenkins-docker-test"
+	registry = "gnschenker/jenkins-docker-test"
 	DOCKER_PWD = credentials('docker-login-pwd')
+	BUILD_NUMBER=26
 	}
 
 	agent {
 	docker {
-	image 'satoshi/node-docker'
+	image 'gnschenker/jenkins-node-sample'
 	args '-p 3000:3000'
 	args '-w /app'
 	args '-v /var/run/docker.sock:/var/run/docker.sock'
