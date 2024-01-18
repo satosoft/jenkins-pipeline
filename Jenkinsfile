@@ -39,6 +39,7 @@ pipeline {
                     // Stop the server
                     sh "kill ${serverProcess}"
                 }
+			}
 		}
 
 		stage("Build & Push Docker image") {
