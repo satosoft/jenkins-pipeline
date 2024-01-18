@@ -29,6 +29,7 @@ pipeline {
 
 		stage("Test"){
 		steps {
+		sh 'node server.js'
 		sh 'npm test'
 		}
 		}
