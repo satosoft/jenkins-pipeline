@@ -37,7 +37,7 @@ pipeline {
                     sh 'npm test'
 
                     // Stop the server
-                    sh "kill ${serverProcess}"
+                    //sh "kill ${serverProcess}"
                 }
 			}
 		}
