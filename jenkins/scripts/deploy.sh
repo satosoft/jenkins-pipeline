@@ -25,4 +25,4 @@ echo "Smoke tests..."
 docker container run --name tester \
 --rm \
 --net test-net \
-satosoft/node-docker sh -c "curl api:3000"
+satosoft/alpine-node-docker sh -c "curl api:3000"
