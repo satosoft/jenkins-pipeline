@@ -46,11 +46,13 @@ pipeline {
 
 		stage("Build & Push Docker image") {
 		steps {
-			sh "docker image build -t satosoft/alpine-node-docker:04 ."
-			sh "docker login -u satosoft -p Docker@1209"
-			sh "docker image push satosoft/alpine-node-docker:04"
+			
+			echo 'build ok'
+			//sh "docker image build -t satosoft/alpine-node-docker:04 ."
+			//sh "docker login -u satosoft -p Docker@1209"
+			//sh "docker image push satosoft/alpine-node-docker:04"
 			//sh "docker image rm $registry:$BUILD_NUMBER"
-			sh "docker image rm satosoft/alpine-node-docker:04"
+			//sh "docker image rm satosoft/alpine-node-docker:04"
 		}
 		}
 		

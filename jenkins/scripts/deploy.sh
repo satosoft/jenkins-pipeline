@@ -18,10 +18,12 @@ printf "."
 done
 echo "API ready on port 3000!"
 EOF
+
 docker container run --rm \
 --net test-net \
 node:12.10-alpine sh -c "$wait_for"
 echo "Smoke tests..."
+
 docker container run --name tester \
 --rm \
 --net test-net \
