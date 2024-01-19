@@ -44,13 +44,20 @@ pipeline {
 
 		stage("Build & Push Docker image") {
 		steps {
-		sh "docker image build -t satosoft/alpine-node-docker:04 ."
-		sh "docker login -u satosoft -p Docker@1209"
-		sh "docker image push satosoft/alpine-node-docker:04"
-		//sh "docker image rm $registry:$BUILD_NUMBER"
-		sh "docker image rm satosoft/alpine-node-docker:04"
+			sh "docker image build -t satosoft/alpine-node-docker:04 ."
+			sh "docker login -u satosoft -p Docker@1209"
+			sh "docker image push satosoft/alpine-node-docker:04"
+			//sh "docker image rm $registry:$BUILD_NUMBER"
+			sh "docker image rm satosoft/alpine-node-docker:04"
 		}
 		}
+		
+		stage('Deploy and smoke test') {
+		steps{
+			sh './jenkins/scripts/deploy.sh'
+		}
+		}
+		
 
 		stage('Cleanup') {
 		steps{
