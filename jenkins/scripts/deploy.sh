@@ -5,7 +5,7 @@ echo "Removing network test-net if it exists..."
 docker network rm test-net || true
 echo "Deploying app ($registry:$BUILD_NUMBER)..."
 docker network create test-net
-docker container run -d \
+docker container run -p 3000:3000 -d \
 --name api \
 --net test-net \$registry:$BUILD_NUMBER
 # Logic to wait for the api component to be ready on port 3000
@@ -27,4 +27,4 @@ echo "Smoke tests..."
 docker container run --name tester \
 --rm \
 --net test-net \
-satosoft/alpine-node-docker sh -c "curl api:3000"
+satosoft/alpine-node-docker:01 sh -c "curl api:3000"
