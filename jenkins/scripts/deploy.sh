@@ -7,7 +7,8 @@ echo "Deploying app ($registry:$BUILD_NUMBER)..."
 docker network create test-net
 docker container run -p 3000:3000 -d \
 --name api \
---net test-net \$registry:$BUILD_NUMBER
+--net test-net \
+satosoft/alpine-node-docker:01
 # Logic to wait for the api component to be ready on port 3000
 read -d '' wait_for << EOF
 echo "Waiting for API to listen on port 3000..."
